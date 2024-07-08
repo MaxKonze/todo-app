@@ -12,5 +12,5 @@ class ToDoItem(models.Model):
     todo_list = models.ForeignKey(to=ToDoList,null=True,on_delete=models.CASCADE)
     label = models.CharField(max_length=100)
     completed = models.BooleanField(default=False)
-    time = models.CharField(max_length=11, default=0)
+    time = models.TimeField(max_length=11, default=0)
 
