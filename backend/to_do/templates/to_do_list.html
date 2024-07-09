@@ -88,9 +88,10 @@
 <body>
     <div class="container">
         <h1>Meine To-Do Liste</h1>
-        <form id="todo-form">
-            <input type="text" id="new-task" placeholder="Neue Aufgabe hinzufügen..." required>
-            <button type="submit">Hinzufügen</button>
+        <form id="todo-form", action="/to_do/", method="post",body=new_task>
+            {% csrf_token %}
+            <input type="text" name=new_task id="new-task" placeholder="Neue Aufgabe hinzufügen..." required > 
+            <button type="submit", onclick= "addTodo()">Hinzufügen</button>
         </form>
         <ul id="task-list">
             <li><label>
@@ -110,5 +111,12 @@
             </li>
         </ul>
     </div>
+
+    <script>
+
+            
+
+
+    </script>
 </body>
 </html>
