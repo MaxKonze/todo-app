@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do Liste</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: left;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 2px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 900px;
+            height: 900px;
+        }
+
+        .item{
+            background-color: #fff;
+            color:black ;
+        }
+        
+        .item:hover{
+            background-color: #fff;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+        }
+
+        button {
+            padding: 8px 12px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Meine To-Do Liste</h1>
+        <form id="todo-form">
+            <input type="text" id="new-task" placeholder="Neue Aufgabe hinzufügen..." required>
+            <button type="submit">Hinzufügen</button>
+        </form>
+        <ul id="task-list">
+            <li><label>
+                <input type="checkbox" name="myCheckbox">
+                </label>
+                <button class="item">Einkaufen gehen</button>
+            </li>
+            <li><label>
+                <input type="checkbox" name="myCheckbox">
+                </label>
+                <button class="item">Einkaufen gehen</button>
+            </li>
+            <li><label>
+                <input type="checkbox" name="myCheckbox">
+                </label>
+                <button class="item">Einkaufen gehen</button>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
