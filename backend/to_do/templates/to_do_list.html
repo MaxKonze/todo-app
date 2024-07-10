@@ -56,8 +56,9 @@
             background-color: #007bff;
             color: #fff;
             border: none;
-            border-radius: 0 4px 4px 0;
+            border-radius: 4px 4px 4px 4px;
             cursor: pointer;
+            margin-left: 10px;
         }
 
         button:hover {
@@ -88,26 +89,31 @@
 <body>
     <div class="container">
         <h1>Meine To-Do Liste</h1>
-        <form id="todo-form", action="/to_do/", method="post",body=new_task>
+        <form id="todo-form", action="/new_todo/">
             {% csrf_token %}
-            <input type="text" name=new_task id="new-task" placeholder="Neue Aufgabe hinzufügen..." required > 
-            <button type="submit", onclick= "addTodo()">Hinzufügen</button>
+            <button type="submit">Neues ToDo hinzufügen</button>
         </form>
         <ul id="task-list">
-            <li><label>
-                <input type="checkbox" name="myCheckbox">
-                </label>
-                <button class="item">Einkaufen gehen</button>
+            <li>
+                <form action="/to_do/" method="post">
+                    {% csrf_token %}
+                    <input type="checkbox" name="myCheckbox">
+                    <button class="item">Einkaufen gehen</button>
+                </form>
             </li>
-            <li><label>
-                <input type="checkbox" name="myCheckbox">
-                </label>
-                <button class="item">Einkaufen gehen</button>
+            <li>
+                <form action="/to_do/" method="post" >
+                    {% csrf_token %}
+                    <input type="checkbox" name="myCheckbox">
+                    <button class="item">Einkaufen gehen</button>
+                </form>
             </li>
-            <li><label>
-                <input type="checkbox" name="myCheckbox">
-                </label>
-                <button class="item">Einkaufen gehen</button>
+            <li>
+                <form action="/to_do/" method="post">
+                    {% csrf_token %}
+                    <input type="checkbox" name="myCheckbox">
+                    <button class="item">Einkaufen gehen</button>
+                </form>
             </li>
         </ul>
     </div>

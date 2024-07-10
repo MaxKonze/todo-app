@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neue Aufgabe hinzufügen</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 600px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        textarea,
+        input[type="text"],
+        input[type="datetime-local"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Neue Aufgabe hinzufügen</h1>
+        <form method="POST" action="/to_do/", method="post">
+            {% csrf_token %}
+
+            <label for="title">Titel</label>
+            <input type="text" name="title" placeholder="Aufgabe eingeben..." required>
+
+            <label for="datetime">Zeit</label>
+            <input type="datetime-local" id="datetime" name="datetime" required>
+
+            <label for="location">Ort</label>
+            <input type="text" id="location" name="location" placeholder="Ort eingeben..." required>
+            
+            <label for="describtion">Beschreibung</label>
+            <textarea   name="describtion" placeholder="Beschreibung eingeben..." rows="4" required></textarea>
+
+            <button type="submit">Hinzufügen</button>
+        </form>
+    </div>
+</body>
+</html>
+
