@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do Löschen Bestätigung</title>
+    <style>
+        /* Globale Stile */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .delete-button {
+            padding: 8px 20px;
+            font-size: 16px;
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .delete-button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do Löschen Bestätigung</h1>
+        <p>Möchten Sie das To-Do "{{todo.title}}" wirklich löschen?</p>
+        <form action="/to_do/" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="delete-button">Ja, löschen</button>
+            <a href="/">Abbrechen</a>
+        </form>
+    </div>
+</body>
+</html>

@@ -42,15 +42,20 @@ def to_do_list(request):
         print(request.POST)
         new_todo = dict(request.POST)
 
-        for item in items:
-            if item.title == new_todo['title'][0]:
-                return render(request,template_name="to_do_list.html",context={"to_dos":items})
 
-        ToDoItem.objects.create(
-            title=new_todo['title'][0],
-            datetime=new_todo['datetime'][0],
-            location=new_todo['location'][0],
-            description=new_todo['description'][0])
+        try:
+            for item in items:
+                if item.title == new_todo['title'][0]:
+                    return render(request,template_name="to_do_list.html",context={"to_dos":items})
+
+            ToDoItem.objects.create(
+                title=new_todo['title'][0],
+                datetime=new_todo['datetime'][0],
+                location=new_todo['location'][0],
+                description=new_todo['description'][0])
+            
+        except KeyError:
+            return render(request,template_name="to_do_list.html",context={"to_dos":items})
 
     return render(request,template_name="to_do_list.html",context={"to_dos":items})
 
@@ -66,3 +71,10 @@ def new_todo(request):
     '''
 
     return render(request,'new_todo.html')
+
+def delete_todo(request,title):
+    print(title)
+
+    item = get_object_or_404(ToDoItem,title=title)
+
+    return render(request,"delete_todo.html",context={"todo":item})
