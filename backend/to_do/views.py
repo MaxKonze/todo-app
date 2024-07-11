@@ -24,6 +24,10 @@ def to_do_list(request):
         print(request.POST)
         new_todo = dict(request.POST)
 
+        for item in items:
+            if item.title == new_todo['title'][0]:
+                return render(request,template_name="to_do_list.html",context={"to_dos":items})
+
         ToDoItem.objects.create(
             title=new_todo['title'][0],
             datetime=new_todo['datetime'][0],
