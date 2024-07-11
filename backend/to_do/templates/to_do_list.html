@@ -50,6 +50,7 @@
             border-radius: 4px 0 0 4px;
         }
 
+
         button {
             padding: 8px 12px;
             font-size: 16px;
@@ -65,9 +66,29 @@
             background-color: #0056b3;
         }
 
+        .todo {
+            display: inline-block;
+            width: calc(100% - 30px);
+            padding: 10px 12px;
+            font-size: 16px;
+            background-color: #fff;
+            color: #000;
+            border: 0px solid #ccc;
+            cursor: pointer;
+            text-align: left;
+            margin-bottom: 3px;
+            text-decoration: none;
+        }
+
+        .todo:hover {
+            background-color: #f0f0f0;
+        }
+        
         ul {
             list-style-type: none;
             padding: 0;
+            margin-left: 10px;
+            margin-top: 15px;
         }
 
         li {
@@ -89,33 +110,27 @@
 <body>
     <div class="container">
         <h1>Meine To-Do Liste</h1>
-        <form id="todo-form", action="/new_todo/">
+        <form id="todo-form", action="/to_do/new">
             {% csrf_token %}
             <button type="submit">Neues ToDo hinzufügen</button>
         </form>
+
+        {% for item in to_dos %}
+
         <ul id="task-list">
-            <li>
-                <form action="/to_do/" method="post">
-                    {% csrf_token %}
-                    <input type="checkbox" name="myCheckbox">
-                    <button class="item">Einkaufen gehen</button>
-                </form>
-            </li>
-            <li>
-                <form action="/to_do/" method="post" >
-                    {% csrf_token %}
-                    <input type="checkbox" name="myCheckbox">
-                    <button class="item">Einkaufen gehen</button>
-                </form>
-            </li>
-            <li>
-                <form action="/to_do/" method="post">
-                    {% csrf_token %}
-                    <input type="checkbox" name="myCheckbox">
-                    <button class="item">Einkaufen gehen</button>
-                </form>
-            </li>
+            
+            <form action="todo/{{ item.title }}/">
+                {% csrf_token %}
+                <input type="checkbox"></input>
+                <button type="submit" name="todo" class="todo">
+                    {{ item.title}}  {{ item.describtion }}
+                </button>
+            </form>
+        <hr>
         </ul>
+
+        
+        {% endfor %}
     </div>
 
     <script>

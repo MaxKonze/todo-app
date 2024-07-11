@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aufgabe Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .detail-item {
+            margin-bottom: 10px;
+        }
+        .detail-item span {
+            font-weight: bold;
+        }
+        .detail-item p {
+            margin: 0;
+        }
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .button-container {
+           text-align: center;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ToDo Details</h1>
+        <div class="detail-item">
+            <span>Titel:</span>
+            <p>{{ todo.title }}</p>
+        </div>
+        <div class="detail-item">
+            <span>Erstellungsdatum:</span>
+            <p>{{ todo.created_at }}</p>
+        </div>
+        <div class="detail-item">
+            <span>Zeit:</span>
+            <p>{{ todo.datetime }}</p>
+        </div>
+        <div class="detail-item">
+            <span>Ort:</span>
+            <p>{{ todo.location }}</p>
+        </div>
+        <div class="detail-item">
+            <span>Beschreibung:</span>
+            <p>{{ todo.description }}</p>
+        </div>
+        <div class="detail-item">
+            <span>Status:</span>
+            <p>{{ todo.completed|yesno:"Erledigt,Nicht erledigt" }}</p>
+        </div>
+
+        <div class="button-container">
+            <a href="/to_do/" class="back-button">Zurück zur Startseite</a>
+        </div>
+    </div>
+</body>
+</html>
