@@ -17,11 +17,10 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from to_do.views import to_dos, new_todo
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("to_do/", to_dos),
-    path("new_todo/", new_todo)
+    path("to_do", include("to_do.urls")),
+   
 ]
