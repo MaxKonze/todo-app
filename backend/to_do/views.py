@@ -40,6 +40,9 @@ def to_do_list(request):
     new_todo = {}
     items = ToDoItem.objects.all()
 
+    if "todo_done" in request.POST:
+        print("done")
+
     if request.method == "POST":
         new_todo = dict(request.POST)
 

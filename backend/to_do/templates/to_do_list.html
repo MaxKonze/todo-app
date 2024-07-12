@@ -121,7 +121,7 @@
 
                     <form action="todo/{{ item.title }}/">
                         {% csrf_token %}
-                        <input type="checkbox"></input>
+                        <input type="checkbox" name = "todo_done" value=" {{item.title}} "></input>
                         <button type="submit" name="todo" class="todo">
                             {{ item.title}}
                         </button>
