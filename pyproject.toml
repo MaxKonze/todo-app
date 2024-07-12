@@ -20,11 +20,11 @@ readme = "README.md"
 license = {}
 keywords = ["todo","todo-app"]
 classifiers = [
-  Development Status :: 3 - Alpha,
-  Environment :: Web Environment,
-  Framework :: Django :: 5.0,
-  Natural Language :: German,
-  Programming Language :: Python
+    "Development Status :: 3 - Alpha",
+    "Environment :: Web Environment",
+    "Framework :: Django :: 5.0",
+    "Natural Language :: German",
+    "Programming Language :: Python"
 ]
 
 [project.urls]
