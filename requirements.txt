@@ -1,1 +1,6 @@
 django
+black
+isort       # sorts all python imports
+ruff        # fast linter, corrects linting errors
+
+###### Add new requirements above with comments
