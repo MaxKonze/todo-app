@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do Löschen Bestätigung</title>
     <style>
-        /* Globale Stile */
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
@@ -50,9 +49,11 @@
         <p>Möchten Sie das To-Do "{{todo.title}}" wirklich löschen?</p>
         <form action="/to_do/" method="POST">
             {% csrf_token %}
-            <button type="submit" class="delete-button">Ja, löschen</button>
-            <a href="/">Abbrechen</a>
+            <button type="submit" class="delete-button">Ja, löschen</button>    
         </form>
+        <div>
+            <a href="/to_do/todo/{{ todo.title }}">Abbrechen</a>
+        </div>
     </div>
 </body>
 </html>

@@ -1,6 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import ToDoItem
+
+del_item = None
 
 
 def to_do(request,title ): 
@@ -15,7 +17,9 @@ def to_do(request,title ):
         HttpResponse: The rendered todo page
     '''
 
+    global del_item
     todo = get_object_or_404(ToDoItem,title=title)
+    del_item = None
 
     return render(request, 'to_do.html',context={"todo":todo})
 
@@ -34,6 +38,7 @@ def to_do_list(request):
         HttpResponse: The rendered todo list page
     '''
 
+    global del_item
     new_todo = {}
     items = ToDoItem.objects.all()
 
@@ -55,8 +60,9 @@ def to_do_list(request):
                 description=new_todo['description'][0])
             
         except KeyError:
-            return render(request,template_name="to_do_list.html",context={"to_dos":items})
-
+            pass
+    
+    items = ToDoItem.objects.all()
     return render(request,template_name="to_do_list.html",context={"to_dos":items})
 
 def new_todo(request):
@@ -73,8 +79,8 @@ def new_todo(request):
     return render(request,'new_todo.html')
 
 def delete_todo(request,title):
-    print(title)
+    global del_item
 
-    item = get_object_or_404(ToDoItem,title=title)
+    del_item = ToDoItem.objects.filter(title=title).delete()
 
-    return render(request,"delete_todo.html",context={"todo":item})
+    return redirect("/to_do/")

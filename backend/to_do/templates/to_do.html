@@ -107,7 +107,7 @@
             <a href="/to_do/" class="back-button">Zurück zur Startseite</a>
         </div>
 
-        <form action="/to_do/todo/{{ todo.title }}/delete" method="post" style="display: inline-block;">
+        <form action="/to_do/todo/{{ todo.title }}/delete/" method="post" style="display: inline-block;">
             {% csrf_token %}
             <button type="submit" class="delete-button">Löschen</button>
         </form>
