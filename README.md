@@ -5,11 +5,13 @@ A web to do app using recommended python conventions
 # Tasks
 
 -  Python Project Structure
-    - Python virtual environment
-    - Project requirements.txt
-    - Dev & Production dependencies
-    - Configuration
+    - Python virtual environment ✅ 
+    - Project requirements.txt ✅ 
+    - Dev & Production dependencies 
+    - Configuration 
 
-- Documentation
+- Documentation 🚧 in Progress
 
-- Source code
+- Source code 🚧 in Progress
+  - todo done
+  -
