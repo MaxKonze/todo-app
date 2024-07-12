@@ -80,15 +80,11 @@
 <body>
     <div class="container">
         <h1>Aufgabe Bearbeiten</h1>
-        <form action="/to_do/todo/{{ todo.title }}/edit/" method="post">
+        <form action="/to_do/todo/{{ todo.title }}/edit/1/" method="post">
             {% csrf_token %}
             <div class="form-item">
                 <label for="title">Titel:</label>
                 <input type="text" id="title" name="title" value="{{ todo.title }}" required>
-            </div>
-            <div class="form-item">
-                <label for="created_at">Erstellungsdatum:</label>
-                <input type="datetime-local" id="created_at" name="created_at" value="{{ todo.created_at|date:'Y-m-d\\TH:i' }}" required>
             </div>
             <div class="form-item">
                 <label for="datetime">Zeit:</label>
@@ -102,18 +98,11 @@
                 <label for="description">Beschreibung:</label>
                 <textarea id="description" name="description" required>{{ todo.description }}</textarea>
             </div>
-            <div class="form-item">
-                <label for="completed">Status:</label>
-                <select id="completed" name="completed" required>
-                    <option value="False" {% if not todo.completed %}selected{% endif %}>Nicht erledigt</option>
-                    <option value="True" {% if todo.completed %}selected{% endif %}>Erledigt</option>
-                </select>
-            </div>
             <div class="button-container">
                 <button type="submit" class="save-button">Speichern</button>
+            </form>
                 <a href="/to_do/" class="back-button">Zurück zur Startseite</a>
             </div>
-        </form>
     </div>
 </body>
 </html>

@@ -40,7 +40,7 @@ class ToDoItem(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=100, default="")
     completed = models.BooleanField(default=False)
-    datetime = models.CharField(max_length=30, default="")
+    datetime = models.DateTimeField(auto_now_add=True)
     location = models.CharField(max_length=100, default="")
     description = models.CharField(max_length=500, default="")
 

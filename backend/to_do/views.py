@@ -3,6 +3,8 @@ from django.shortcuts import get_object_or_404, redirect, render
 
 from .models import ToDoItem
 
+old = None
+
 
 def to_do(request: HttpRequest, title: str) -> HttpResponse:
     """
@@ -96,12 +98,37 @@ def delete_todo(request, title):
 
 
 def edit_todo(request, title):
-    """_summary_
+    """
+    Redirect to the edit page
 
     Args:
-        request (_type_): _description_
-        title (_type_): _description_
+        request (HttpRequest): The HTTP request object
+        title (str): title of the todo
     """
-    item = get_object_or_404(ToDoItem, title=title)
+    global old
+    old = get_object_or_404(ToDoItem, title=title)
 
-    return render(request, "edit_todo.html", context={"todo": item})
+    return render(request, "edit_todo.html", context={"todo": old})
+
+
+def commit_edit(request, title):
+    """
+    Edits the todo
+
+    Args:
+        request (HttpRequest): The HTTP request object
+        title (str): title of the todo
+
+    Returns:
+        HttpResponse: Redirects to the todo
+    """
+
+    new = dict(request.POST)
+
+    old.title = new["title"][0]
+    old.datetime = new["datetime"][0]
+    old.location = new["location"][0]
+    old.description = new["description"][0]
+    old.save()
+
+    return redirect(f"/to_do/todo/{new['title'][0]}")
