@@ -21,6 +21,7 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 400px;
+            position: relative; /* Für den Bearbeiten-Button */
         }
         h1 {
             text-align: center;
@@ -47,12 +48,10 @@
             text-decoration: none;
             transition: background-color 0.3s, transform 0.3s;
         }
-
         .back-button:hover {
             background-color: #0056b3;
             transform: scale(1.05);
         }
-
         .delete-button {
             padding: 8px 12px;
             font-size: 16px;
@@ -61,23 +60,36 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            margin-left: 10px;
         }
-
         .delete-button:hover {
             background-color: #c82333;
         }
-
         .button-container {
-           text-align: center;
+            text-align: center;
             margin-top: 20px;
         }
-
+        .edit-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 8px 12px;
+            font-size: 14px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .edit-button:hover {
+            background-color: #218838;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>ToDo Details</h1>
+        <a href="/to_do/todo/{{ todo.title }}/edit/" class="edit-button">Bearbeiten</a>
         <div class="detail-item">
             <span>Titel:</span>
             <p>{{ todo.title }}</p>
@@ -107,10 +119,12 @@
             <a href="/to_do/" class="back-button">Zurück zur Startseite</a>
         </div>
 
-        <form action="/to_do/todo/{{ todo.title }}/delete/" method="post" style="display: inline-block;">
-            {% csrf_token %}
-            <button type="submit" class="delete-button">Löschen</button>
-        </form>
+        <div class="button-container">
+            <form action="/to_do/todo/{{ todo.title }}/delete/" method="post">
+                {% csrf_token %}
+                <button type="submit" class="delete-button">Löschen</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>

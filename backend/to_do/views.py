@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpRequest
 from .models import ToDoItem
 
 
-def to_do(request,title ): 
+def to_do(request: HttpRequest,title :str )-> HttpResponse: 
     '''
      Renders the to-do item detail page based on the provided title
     
@@ -70,7 +70,28 @@ def new_todo(request):
     return render(request,'new_todo.html')
 
 def delete_todo(request,title):
+    '''
+    Deletes a todo after clicking the delete Button
+
+    Parameters:
+        request (HttpRequest): The HTTP request object
+        title (str): title of the todo
+
+    Returns:
+        HttpResponse: A redirect to the todo main page
+    '''
 
     ToDoItem.objects.filter(title=title).delete()
 
     return redirect("/to_do/")
+
+def edit_todo(request,title):
+    """_summary_
+
+    Args:
+        request (_type_): _description_
+        title (_type_): _description_
+    """
+    item = get_object_or_404(ToDoItem,title=title)
+
+    return render(request,'edit_todo.html', context={"todo":item})

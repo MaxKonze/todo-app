@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "todo-app"
+version = "0.0.1"
+dependencies = [
+  "django",
+]
+requires-python = ">=3.10"
+author = [
+  {name = "Max Konze", email = "max.konze@t-online.de"},
+]
+maintainers = [
+  {name = "Max Konze", email = "max.konze@t-online.de"}
+]
+description = "A django based todo App for browser"
+readme = "README.md"
+license = {}
+keywords = ["todo","todo-app"]
+classifiers = [
+  Development Status :: 3 - Alpha,
+  Environment :: Web Environment,
+  Framework :: Django :: 5.0,
+  Natural Language :: German,
+  Programming Language :: Python
+]
+
+[project.urls]
+Homepage = ""
+Repository = "https://github.com/MaxKonze/todo-app"
+Changelog = "https://github.com/MaxKonze/todo-app/blob/4a63ec60a69ce553f0bd75ebe7b1c30c595a10a9/Changelog.md"
+
+[project.gui-scripts]
+todo-gui = "manage:main"
