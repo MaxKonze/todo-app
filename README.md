@@ -8,9 +8,8 @@ A web to do app using recommended python conventions
     - Python virtual environment
     - Project requirements.txt
     - Dev & Production dependencies
-    - Configuration 
+    - Configuration
 
 - Documentation
 
 - Source code
-

@@ -1,6 +1,8 @@
-django
-black
+django      # a web framework for python
+black       # improves code structure and provides speed and determinism
 isort       # sorts all python imports
 ruff        # fast linter, corrects linting errors
+pre-commit  # plugin to run git hooks before commit
+
 
 ###### Add new requirements above with comments

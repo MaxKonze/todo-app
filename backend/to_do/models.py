@@ -17,6 +17,9 @@ class ToDoList(models.Model):
     modified_at = models.DateTimeField(auto_now=True)
     completed = models.BooleanField(default=False)
 
+    def __str__(self) -> str:
+        return
+
 
 class ToDoItem(models.Model):
     """
@@ -40,3 +43,6 @@ class ToDoItem(models.Model):
     datetime = models.CharField(max_length=30, default="")
     location = models.CharField(max_length=100, default="")
     description = models.CharField(max_length=500, default="")
+
+    def __str__(self) -> str:
+        return

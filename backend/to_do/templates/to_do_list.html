@@ -28,7 +28,7 @@
             background-color: #fff;
             color:black ;
         }
-        
+
         .item:hover{
             background-color: #fff;
         }
@@ -83,7 +83,7 @@
         .todo:hover {
             background-color: #f0f0f0;
         }
-        
+
         ul {
             list-style-type: none;
             padding: 0;
@@ -118,18 +118,18 @@
         {% for item in to_dos %}
 
         <ul id="task-list">
-            
+
             <form action="todo/{{ item.title }}/">
                 {% csrf_token %}
                 <input type="checkbox"></input>
                 <button type="submit" name="todo" class="todo">
-                    {{ item.title}} 
+                    {{ item.title}}
                 </button>
             </form>
         <hr>
         </ul>
 
-        
+
         {% endfor %}
     </div>
 

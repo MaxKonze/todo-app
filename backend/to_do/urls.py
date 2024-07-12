@@ -1,5 +1,4 @@
-from django.urls import include, path
-
+from django.urls import path
 from to_do.views import delete_todo, edit_todo, new_todo, to_do, to_do_list
 
 urlpatterns = [
